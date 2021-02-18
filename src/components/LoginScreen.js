@@ -8,6 +8,8 @@ import {
   Pressable,
 } from 'react-native';
 
+import Colors from '../res/Colors';
+
 const LoginScreen = (props) => {
   const handlePress = (e) => {
     props.navigation.navigate('MainMenu');
@@ -36,7 +38,7 @@ const LoginScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#63CEF3',
+    backgroundColor: Colors.azul,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -65,11 +67,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 40,
-    backgroundColor: '#ed91b7',
+    backgroundColor: Colors.rosa,
     alignSelf: 'center',
     textAlign: 'center',
     margin: 40,
-    borderColor: '#cf7e9f',
+    borderColor: Colors.rosa,
   },
   buttonText: {
     color: 'white',
