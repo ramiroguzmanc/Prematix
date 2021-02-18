@@ -5,9 +5,14 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
+  const handlePress = (e) => {
+    props.navigation.navigate('MainMenu');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Prematix</Text>
@@ -22,9 +27,9 @@ const LoginScreen = () => {
         placeholderTextColor="white"
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.button}>
+      <Pressable style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Iniciar Sesión</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 };
