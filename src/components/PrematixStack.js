@@ -10,8 +10,8 @@ const PrematixStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="MainMenu" component={MainMenu} />
-      <Stack.Screen name="NeonatalCareScreen" component={NeonatalCareScreen} />
+      <Stack.Screen name="Menú principal" component={MainMenu} />
+      <Stack.Screen name="Cuidado neonatal" component={NeonatalCareScreen} />
     </Stack.Navigator>
   );
 };
