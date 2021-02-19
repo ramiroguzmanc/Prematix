@@ -2,8 +2,11 @@ import React from 'react';
 import {Pressable, Text, StyleSheet, Image} from 'react-native';
 
 const MainMenuOption = (props) => {
+  const handlePress = () => {
+    props.navigation.navigate(props.goTo);
+  };
   return (
-    <Pressable style={styles.optionContainer}>
+    <Pressable style={styles.optionContainer} onPress={handlePress}>
       <Image style={styles.image} source={props.source} />
       <Text style={styles.optionText}>{props.title}</Text>
     </Pressable>

@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {Component} from 'react';
+import {View, StyleSheet, Pressable, Text} from 'react-native';
 import MainMenuOption from './MainMenuOption';
 import Colors from '../res/Colors';
 import cuidado from '../assets/images/cuidado.png';
@@ -9,10 +9,15 @@ import preguntas from '../assets/images/preguntas.png';
 import contacto from '../assets/images/contacto.png';
 import about from '../assets/images/about.png';
 
-const MainMenu = () => {
+const MainMenu = (props) => {
   return (
     <View style={styles.container}>
-      <MainMenuOption title="Cuidado Neonatal" source={cuidado} />
+      <MainMenuOption
+        title="Cuidado Neonatal"
+        source={cuidado}
+        goTo="NeonatalCareScreen"
+        {...props}
+      />
       <MainMenuOption title="Acerca de mi neonato" source={acercade} />
       <MainMenuOption title="Ver mi neonato" source={verneo} />
       <MainMenuOption title="Preguntas frecuentes" source={preguntas} />
