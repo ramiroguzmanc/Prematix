@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TextInput, StyleSheet, View} from 'react-native';
 import Colors from '../res/Colors';
+import fontConfig from '../res/fontConfig';
 
 const ShowValue = (props) => {
   return (
@@ -21,19 +22,19 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderColor: 'gray',
-    borderWidth: 1,
+    borderBottomWidth: 1,
     flexDirection: 'row',
     // marginVertical: 8,
     paddingVertical: 10,
   },
   text: {
-    fontSize: 20,
+    fontSize: fontConfig.p.fontSize,
     color: 'white',
     fontWeight: 'bold',
   },
   input: {
-    borderWidth: 1,
-    height: '77%',
+    borderBottomWidth: 1,
+    height: '80%',
     width: '65%',
     borderRadius: 7,
     paddingHorizontal: 10,

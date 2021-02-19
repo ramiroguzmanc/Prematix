@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import fontConfig from '../res/fontConfig';
 
 const NeonatalCareScreen = (props) => {
   return (
@@ -14,13 +15,8 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: 15,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  p: {
-    fontSize: 20,
-  },
+  title: fontConfig.title,
+  p: fontConfig.p,
 });
 
 export default NeonatalCareScreen;
