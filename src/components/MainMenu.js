@@ -15,7 +15,7 @@ const MainMenu = (props) => {
       <MainMenuOption
         title="Cuidado Neonatal"
         source={cuidado}
-        goTo="Cuidado neonatal"
+        goTo="NeonatalCareScreen"
         {...props}
       />
       <MainMenuOption title="Acerca de mi neonato" source={acercade} />

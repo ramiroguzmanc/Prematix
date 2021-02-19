@@ -9,9 +9,21 @@ const Stack = createStackNavigator();
 const PrematixStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Menú principal" component={MainMenu} />
-      <Stack.Screen name="Cuidado neonatal" component={NeonatalCareScreen} />
+      <Stack.Screen
+        name="Login"
+        component={LoginScreen}
+        options={{title: 'Iniciar Sesión'}}
+      />
+      <Stack.Screen
+        name="MainMenu"
+        component={MainMenu}
+        options={{title: 'Menú principal'}}
+      />
+      <Stack.Screen
+        name="NeonatalCareScreen"
+        component={NeonatalCareScreen}
+        options={{title: 'Cuidado Neonatal'}}
+      />
     </Stack.Navigator>
   );
 };

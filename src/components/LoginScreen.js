@@ -5,7 +5,7 @@ import Colors from '../res/Colors';
 
 const LoginScreen = (props) => {
   const handlePress = (e) => {
-    props.navigation.navigate('Menú principal');
+    props.navigation.navigate('MainMenu');
   };
 
   return (
