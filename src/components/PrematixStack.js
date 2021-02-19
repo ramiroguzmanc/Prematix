@@ -1,9 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from './LoginScreen';
-import MainMenu from './MainMenu';
-import NeonatalCareScreen from './NeonatalCareScreen';
-import NeonatalInfoScreen from './NeonatalInfoScreen';
+import LoginScreen from '../screens/LoginScreen';
+import MainMenu from '../screens/MainMenu';
+import NeonatalCareScreen from '../screens/NeonatalCareScreen';
+import NeonatalInfoScreen from '../screens/NeonatalInfoScreen';
 
 const Stack = createStackNavigator();
 

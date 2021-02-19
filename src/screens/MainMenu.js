@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Pressable, Text} from 'react-native';
-import MenuOption from './MenuOption';
+import MenuOption from '../components/MenuOption';
 import Colors from '../res/Colors';
 import cuidado from '../assets/images/cuidado.png';
 import acercade from '../assets/images/acercade.png';

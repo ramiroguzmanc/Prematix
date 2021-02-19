@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import MenuOption from './MenuOption';
+import MenuOption from '../components/MenuOption';
 import Colors from '../res/Colors';
 
 const NeonatalCareScreen = () => {

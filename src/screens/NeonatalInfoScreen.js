@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, Image, StyleSheet} from 'react-native';
 import Colors from '../res/Colors';
 import user from '../assets/images/user.png';
-import ShowValue from './ShowValue';
+import ShowValue from '../components/ShowValue';
 
 const NeonatalInfoScreen = () => {
   return (
