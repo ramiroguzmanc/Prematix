@@ -18,7 +18,12 @@ const MainMenu = (props) => {
         goTo="NeonatalCareScreen"
         {...props}
       />
-      <MainMenuOption title="Acerca de mi neonato" source={acercade} />
+      <MainMenuOption
+        title="Acerca de mi neonato"
+        source={acercade}
+        goTo="NeonatalInfoScreen"
+        {...props}
+      />
       <MainMenuOption title="Ver mi neonato" source={verneo} />
       <MainMenuOption title="Preguntas frecuentes" source={preguntas} />
       <MainMenuOption title="Contactar pediatra" source={contacto} />

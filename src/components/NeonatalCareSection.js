@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   p: {
-    fontSize: 18,
+    fontSize: 20,
   },
 });
 

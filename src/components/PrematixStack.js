@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from './LoginScreen';
 import MainMenu from './MainMenu';
 import NeonatalCareScreen from './NeonatalCareScreen';
+import NeonatalInfoScreen from './NeonatalInfoScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const PrematixStack = () => {
         name="NeonatalCareScreen"
         component={NeonatalCareScreen}
         options={{title: 'Cuidado Neonatal'}}
+      />
+      <Stack.Screen
+        name="NeonatalInfoScreen"
+        component={NeonatalInfoScreen}
+        options={{title: 'Acerca de mi neonato'}}
       />
     </Stack.Navigator>
   );
