@@ -1,53 +1,30 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import NeonatalCareSection from './NeonatalCareSection';
+import {View, StyleSheet} from 'react-native';
+import MenuOption from './MenuOption';
+import Colors from '../res/Colors';
 
 const NeonatalCareScreen = () => {
   return (
-    <ScrollView style={styles.container}>
-      <NeonatalCareSection
-        title="Neonatal Care Screen"
-        contain="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, molestiae.
-        Dolorem hic cum ea blanditiis excepturi consequuntur ex modi cupiditate,
-        quo suscipit, fugiat non error labore molestiae quae, accusantium
-        perspiciatis?"
-      />
-      <NeonatalCareSection
-        title="Neonatal Care Screen"
-        contain="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, molestiae.
-        Dolorem hic cum ea blanditiis excepturi consequuntur ex modi cupiditate,
-        quo suscipit, fugiat non error labore molestiae quae, accusantium
-        perspiciatis?"
-      />
-      <NeonatalCareSection
-        title="Neonatal Care Screen"
-        contain="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, molestiae.
-        Dolorem hic cum ea blanditiis excepturi consequuntur ex modi cupiditate,
-        quo suscipit, fugiat non error labore molestiae quae, accusantium
-        perspiciatis?"
-      />
-      <NeonatalCareSection
-        title="Neonatal Care Screen"
-        contain="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, molestiae.
-        Dolorem hic cum ea blanditiis excepturi consequuntur ex modi cupiditate,
-        quo suscipit, fugiat non error labore molestiae quae, accusantium
-        perspiciatis?"
-      />
-      <NeonatalCareSection
-        title="Neonatal Care Screen"
-        contain="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, molestiae.
-        Dolorem hic cum ea blanditiis excepturi consequuntur ex modi cupiditate,
-        quo suscipit, fugiat non error labore molestiae quae, accusantium
-        perspiciatis?"
-      />
-    </ScrollView>
+    <View style={styles.container}>
+      <MenuOption title="Baño del bebé" />
+      <MenuOption title="Cuidados con el ombligo" />
+      <MenuOption title="Vestido y cambio del pañal" />
+      <MenuOption title="Cuidados con la piel" />
+      <MenuOption title="Exposición al sol" />
+      <MenuOption title="Ambiente y sueño" />
+      <MenuOption title="Vacunación" />
+      <MenuOption title="Lactancia materna" />
+      <MenuOption title="Posiciones de amamantamiento" />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: Colors.azul,
     padding: 7,
-    backgroundColor: 'white',
+    alignItems: 'center',
+    flex: 1,
   },
 });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Pressable, Text, StyleSheet, Image} from 'react-native';
+import fontConfig from '../res/fontConfig';
 
 const MainMenuOption = (props) => {
   const handlePress = () => {
@@ -7,7 +8,7 @@ const MainMenuOption = (props) => {
   };
   return (
     <Pressable style={styles.optionContainer} onPress={handlePress}>
-      <Image style={styles.image} source={props.source} />
+      {props.source && <Image style={styles.image} source={props.source} />}
       <Text style={styles.optionText}>{props.title}</Text>
     </Pressable>
   );
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   optionText: {
-    fontSize: 20,
+    fontSize: fontConfig.p.fontSize,
     fontWeight: 'bold',
   },
   image: {
