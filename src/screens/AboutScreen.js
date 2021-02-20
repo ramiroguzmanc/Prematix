@@ -9,15 +9,27 @@ const AboutScreen = () => {
       <View style={style.sectionContainer}>
         <Text style={style.title}>PREMATIX (BETA)</Text>
         <Text style={style.p}>
-          Prematix vesión BETA.{'\n'}Proyecto de Tesis semilleros de
-          investigación GNOXIS y de la Universidad del Sinú sede Montería.
+          La presente aplicación es el resultado del proyecto de tesis: DISEÑO Y
+          DESARROLLO DE UNA APLICACIÓN MÓVIL PARA LA ATENCIÓN EN SALUD EN RECIÉN
+          NACIDOS PREMATUROS EN LOS SERVICIOS DE UTIN, NEONATOS Y LACTANTES DE
+          UNA INSTITUCIÓN DE SALUD DE MONTERÍA. Proyecto interdisciplinario
+          realizado por los semilleros de investigación GNOXIS y -- de la
+          Universidad del Sinú sede Montería.
         </Text>
       </View>
-      <View>
-        <Text style={style.title}>Integrantes</Text>
+      <View style={style.sectionContainer}>
+        <Text style={style.title}>Integrantes grupo GNOXIS</Text>
         <Text style={style.p}>
           Ramiro Guzmán Cabrera{'\n'}Cristian Castillo Álvarez{'\n'}Sergio Pérez
           Arrieta
+          {'\n'}Juan Torres Tovio (Asesor)
+        </Text>
+      </View>
+      <View style={style.sectionContainer}>
+        <Text style={style.title}>Integrantes grupo --</Text>
+        <Text style={style.p}>
+          Jemima Cassares Guarnizo{'\n'}
+          Carolina Castellanos (Asesora)
         </Text>
       </View>
     </ScrollView>
