@@ -10,8 +10,9 @@ const CN1 = () => {
     <ScrollView style={style.Container}>
       <Text style={style.title}>Baño del bebé</Text>
       <Text style={style.p}>
-        Alistar todo lo que se necesite para el baño del bebé (toalla, esponja,
-        jabón o champú, ropa, pañal) calentando la ropa en el seno de la madre.
+        👶🏼 Alistar todo lo que se necesite para el baño del bebé (toalla,
+        esponja, jabón o champú, ropa, pañal) calentando la ropa en el seno de
+        la madre.
         {'\n\n'}
         👶🏼 Evitar corrientes de aire.{'\n\n'}
         👶🏼 Asegurarse que el agua esté templada, ni demasiado fría, ni demasiado
@@ -21,6 +22,7 @@ const CN1 = () => {
         👶🏼 Secar rápidamente al bebé y vestirlo rápidamente
       </Text>
       <Image style={style.image} source={bano} />
+      <Text>Imagen tomada de descubretusalud.com{'\n'}</Text>
     </ScrollView>
   );
 };
