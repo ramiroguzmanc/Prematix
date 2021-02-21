@@ -1,5 +1,6 @@
 import React from 'react';
 import {ScrollView, Text, StyleSheet, View} from 'react-native';
+import Colors from '../res/Colors';
 import ContainerConfig from '../res/ContainerConfig';
 import fontConfig from '../res/fontConfig';
 
@@ -39,12 +40,14 @@ const AboutScreen = () => {
 const style = StyleSheet.create({
   container: {
     ...ContainerConfig.pplContainer,
+    backgroundColor: 'white',
   },
   sectionContainer: {
     ...ContainerConfig.sectionContainer,
   },
   title: {
     ...fontConfig.title,
+    color: Colors.rosa,
   },
   p: {
     ...fontConfig.p,
