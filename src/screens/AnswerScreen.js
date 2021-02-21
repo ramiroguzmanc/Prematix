@@ -13,12 +13,12 @@ const AnswerScreen = (props) => {
           {info.title}
           {'\n'}
         </Text>
-        {/* <Text style={styles.p}>
-          {info.answer}
-          {'\n'}
-        </Text> */}
-        {info.font && <Text>Información recopilada de: {info.font}</Text>}
         {info.children}
+        {info.font && (
+          <Text>
+            {'\n'}Información recopilada de: {info.font}
+          </Text>
+        )}
       </View>
     </ScrollView>
   );
