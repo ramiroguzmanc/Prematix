@@ -14,6 +14,8 @@ import CN7 from '../screens/CN7';
 import CN8 from '../screens/CN8';
 import CN9 from '../screens/CN9';
 import CN10 from '../screens/CN10';
+import FQAScreen from '../screens/FQAScreen';
+import AnswerScreen from '../screens/AnswerScreen';
 import AboutScreen from '../screens/AboutScreen';
 
 const Stack = createStackNavigator();
@@ -35,11 +37,6 @@ const PrematixStack = () => {
         name="NeonatalCareScreen"
         component={NeonatalCareScreen}
         options={{title: 'Cuidado Neonatal'}}
-      />
-      <Stack.Screen
-        name="NeonatalInfoScreen"
-        component={NeonatalInfoScreen}
-        options={{title: 'Acerca de mi neonato'}}
       />
       <Stack.Screen
         name="CN1"
@@ -90,6 +87,23 @@ const PrematixStack = () => {
         name="CN10"
         component={CN10}
         options={{title: 'Fuente de información'}}
+      />
+
+      <Stack.Screen
+        name="NeonatalInfoScreen"
+        component={NeonatalInfoScreen}
+        options={{title: 'Acerca de mi neonato'}}
+      />
+
+      <Stack.Screen
+        name="FQAScreen"
+        component={FQAScreen}
+        options={{title: 'Preguntas frecuentes'}}
+      />
+      <Stack.Screen
+        name="AnswerScreen"
+        component={AnswerScreen}
+        options={{title: 'Respuesta'}}
       />
 
       <Stack.Screen

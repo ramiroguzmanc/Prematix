@@ -4,7 +4,7 @@ import fontConfig from '../res/fontConfig';
 
 const MainMenuOption = (props) => {
   const handlePress = () => {
-    props.navigation.navigate(props.goTo);
+    props.navigation.navigate(props.goTo, {...props});
   };
   return (
     <Pressable style={styles.optionContainer} onPress={handlePress}>

@@ -25,7 +25,12 @@ const MainMenu = (props) => {
         {...props}
       />
       <MenuOption title="Ver mi neonato" source={verneo} />
-      <MenuOption title="Preguntas frecuentes" source={preguntas} />
+      <MenuOption
+        title="Preguntas frecuentes"
+        source={preguntas}
+        goTo="FQAScreen"
+        {...props}
+      />
       <MenuOption title="Contactar pediatra" source={contacto} />
       <MenuOption
         title="Acerca de la app"
