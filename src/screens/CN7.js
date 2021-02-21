@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {ScrollView, Text, StyleSheet, Image, View} from 'react-native';
+import {ScrollView, Text, StyleSheet, View} from 'react-native';
 import {Table, Row, Rows} from 'react-native-table-component';
 import fontConfig from '../res/fontConfig';
 import Colors from '../res/Colors';
 import ContainerConfig from '../res/ContainerConfig';
 
 const CN7 = () => {
-  const [table, tableState] = useState({
+  const [table, settableState] = useState({
     tableHead: [
       'Nombre de la vacuna',
       'Enfermedad que previene',
