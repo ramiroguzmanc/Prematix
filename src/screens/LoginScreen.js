@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
 
 import Colors from '../res/Colors';
 
 const LoginScreen = (props) => {
-  const handlePress = (e) => {
-    props.navigation.navigate('MainMenu');
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+
+  const handlePress = async (e) => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      console.log('User log');
+      props.navigation.navigate('MainMenu');
+    } catch (error) {
+      console.log(error);
+      alert('Los datos suministrados no son válidos');
+    }
   };
 
   return (
@@ -15,12 +25,14 @@ const LoginScreen = (props) => {
         style={styles.input}
         placeholder="Email"
         placeholderTextColor="white"
+        onChangeText={(userEmail) => setEmail(userEmail)}
       />
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
         placeholderTextColor="white"
         secureTextEntry={true}
+        onChangeText={(userPassword) => setPassword(userPassword)}
       />
       <Pressable style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>Iniciar Sesión</Text>
