@@ -1,5 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
+import firebase from '../utils/firebase';
+import 'firebase/auth';
 
 import Colors from '../res/Colors';
 
@@ -10,7 +12,7 @@ const LoginScreen = (props) => {
   const handlePress = async (e) => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      console.log('User log');
+      // console.log('User log');
       props.navigation.navigate('MainMenu');
     } catch (error) {
       console.log(error);

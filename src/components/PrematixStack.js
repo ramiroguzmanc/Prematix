@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {Pressable, StyleSheet, Text} from 'react-native';
+
 import {createStackNavigator} from '@react-navigation/stack';
 import firebase from '../utils/firebase';
 import 'firebase/auth';
@@ -15,15 +17,19 @@ const Stack = createStackNavigator();
 
 const PrematixStack = () => {
   const [signedIn, setSignedIn] = useState(null);
+
   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log('user loggeado');
-      setSignedIn(true);
-    } else {
-      console.log('User no loggeado');
-      setSignedIn(false);
-    }
+    user ? setSignedIn(true) : setSignedIn(false);
   });
+
+  const handlePress = async () => {
+    try {
+      await firebase.auth().signOut().then(setSignedIn(false));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Stack.Navigator>
       {signedIn ? (
@@ -31,7 +37,14 @@ const PrematixStack = () => {
           <Stack.Screen
             name="MainMenu"
             component={MainMenu}
-            options={{title: 'Menú principal'}}
+            options={{
+              title: 'Menú principal',
+              headerRight: () => (
+                <Pressable style={styles.button} onPress={handlePress}>
+                  <Text style={styles.text}>Cerrar Sesión</Text>
+                </Pressable>
+              ),
+            }}
           />
           <Stack.Screen
             name="NeonatalCareScreen"
@@ -72,5 +85,19 @@ const PrematixStack = () => {
     </Stack.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: 'red',
+    borderRadius: 8,
+    padding: 10,
+    marginRight: 7,
+  },
+  text: {
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 16,
+  },
+});
 
 export default PrematixStack;
