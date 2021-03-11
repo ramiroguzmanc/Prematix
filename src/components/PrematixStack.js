@@ -9,6 +9,7 @@ import LoginScreen from '../screens/LoginScreen';
 import MainMenu from '../screens/MainMenu';
 import NeonatalCareScreen from '../screens/NeonatalCareScreen';
 import NeonatalInfoScreen from '../screens/NeonatalInfoScreen';
+import NeonatalList from '../screens/NeonatalList';
 import FQAScreen from '../screens/FQAScreen';
 import AnswerScreen from '../screens/AnswerScreen';
 import AboutScreen from '../screens/AboutScreen';
@@ -18,13 +19,13 @@ const Stack = createStackNavigator();
 const PrematixStack = () => {
   const [signedIn, setSignedIn] = useState(null);
 
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.firebase.auth().onAuthStateChanged((user) => {
     user ? setSignedIn(true) : setSignedIn(false);
   });
 
   const handlePress = async () => {
     try {
-      await firebase.auth().signOut().then(setSignedIn(false));
+      await firebase.firebase.auth().signOut().then(setSignedIn(false));
     } catch (error) {
       console.log(error);
     }
@@ -53,8 +54,8 @@ const PrematixStack = () => {
           />
 
           <Stack.Screen
-            name="NeonatalInfoScreen"
-            component={NeonatalInfoScreen}
+            name="NeonatalList"
+            component={NeonatalList}
             options={{title: 'Acerca de mi neonato'}}
           />
 

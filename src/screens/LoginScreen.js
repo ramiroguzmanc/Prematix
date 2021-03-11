@@ -11,7 +11,9 @@ const LoginScreen = (props) => {
 
   const handlePress = async (e) => {
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      await firebase.firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
       // console.log('User log');
       props.navigation.navigate('MainMenu');
     } catch (error) {

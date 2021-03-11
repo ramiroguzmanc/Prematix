@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: 'AIzaSyBiBsIpYmiZ35adOI1vOSbGpusgpV7U0gw',
   authDomain: 'prematix-cbe3a.firebaseapp.com',
   projectId: 'prematix-cbe3a',
@@ -9,4 +10,10 @@ const firebaseConfig = {
   appId: '1:757284764200:web:9a750ce1e0ddfc09d0531d',
 };
 
-export default firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+firebase.firestore().settings({ experimentalForceLongPolling: true })
+export default {
+  firebase,
+  db,
+};
