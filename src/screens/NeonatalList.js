@@ -81,7 +81,8 @@ const NeonatalList = (props) => {
                 {neo.name} {neo.lastname}
               </ListItem.Title>
               <ListItem.Subtitle style={styles.subp}>
-                Peso: {neo.weight} - IMC: {neo.IMC} - Altura: {neo.height}
+                Peso: {neo.weight} lbs. - IMC: {neo.IMC} - Altura: {neo.height}
+                cm
               </ListItem.Subtitle>
             </ListItem.Content>
             {/* <ListItem.Chevron color="black" /> */}

@@ -77,7 +77,7 @@ const NeonatalInfoScreen = (props) => {
 
 const style = StyleSheet.create({
   scrollContainer: {
-    //  backgroundColor: 'white',
+    backgroundColor: 'white',
   },
   avatarContainer: {
     alignContent: 'center',
