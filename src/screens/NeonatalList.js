@@ -5,8 +5,9 @@ import {ListItem, Avatar} from 'react-native-elements';
 import ContainerConfig from '../res/ContainerConfig';
 import fontConfig from '../res/fontConfig';
 import 'firebase/auth';
+import 'react-native-vector-icons';
 
-const NeonatalList = () => {
+const NeonatalList = (props) => {
   const [neonatos, setNeonatos] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -61,13 +62,15 @@ const NeonatalList = () => {
           <ListItem
             key={neo.id}
             style={styles.listItem}
-            onPress={() => alert(neo.id)}>
+            onPress={() => props.navigation.navigate('NeonatalInfoScreen')}>
             <Avatar
-              source={{
-                uri:
-                  'https://www.tuexperto.com/wp-content/uploads/2015/07/perfil_01.jpg',
-              }}
               rounded
+              size="medium"
+              title={'N'}
+              source={{
+                uri: '#',
+                //'https://www.tuexperto.com/wp-content/uploads/2015/07/perfil_01.jpg',
+              }}
             />
             <ListItem.Content>
               <ListItem.Title style={styles.p}>
@@ -77,6 +80,7 @@ const NeonatalList = () => {
                 Peso: {neo.weight} - IMC: {neo.IMC} - Altura: {neo.height}
               </ListItem.Subtitle>
             </ListItem.Content>
+            {/* <ListItem.Chevron color="black" /> */}
           </ListItem>
         );
       })}

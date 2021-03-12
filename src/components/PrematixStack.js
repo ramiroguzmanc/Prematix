@@ -56,6 +56,12 @@ const PrematixStack = () => {
           <Stack.Screen
             name="NeonatalList"
             component={NeonatalList}
+            options={{title: 'Selección de neonato'}}
+          />
+
+          <Stack.Screen
+            name="NeonatalInfoScreen"
+            component={NeonatalInfoScreen}
             options={{title: 'Acerca de mi neonato'}}
           />
 

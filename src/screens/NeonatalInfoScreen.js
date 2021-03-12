@@ -1,13 +1,26 @@
 import React from 'react';
-import {ScrollView, Image, StyleSheet} from 'react-native';
+import {ScrollView, View, StyleSheet} from 'react-native';
 import Colors from '../res/Colors';
 import user from '../assets/images/user.png';
 import ShowValue from '../components/ShowValue';
 
+import {Avatar} from 'react-native-elements';
+
 const NeonatalInfoScreen = () => {
   return (
     <ScrollView style={style.scrollContainer}>
-      <Image source={user} style={style.image} />
+      <View style={style.avatarContainer}>
+        <Avatar
+          size="xlarge"
+          rounded
+          title="CR"
+          activeOpacity={0.7}
+          source={{
+            uri:
+              'https://www.tuexperto.com/wp-content/uploads/2015/07/perfil_01.jpg',
+          }}
+        />
+      </View>
       <ShowValue title="Fec. Nac:" place="DD/MM/AA" />
       <ShowValue title="Peso:" place="kg." measure="kg." />
       <ShowValue title="Altura:" place="Cm" measure="Cm." />
@@ -23,14 +36,10 @@ const style = StyleSheet.create({
   scrollContainer: {
     backgroundColor: Colors.azul,
   },
-  image: {
-    height: 150,
-    width: 150,
-    alignSelf: 'center',
-    borderColor: 'white',
-    borderWidth: 2,
-    borderRadius: 100,
-    margin: 30,
+  avatarContainer: {
+    alignContent: 'center',
+    alignItems: 'center',
+    marginVertical: 20,
   },
 });
 
