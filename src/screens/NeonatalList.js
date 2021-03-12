@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, Button, StyleSheet} from 'react-native';
+import {ScrollView, Text, StyleSheet} from 'react-native';
 import firebase from '../utils/firebase';
 import {ListItem, Avatar} from 'react-native-elements';
 import ContainerConfig from '../res/ContainerConfig';
 import fontConfig from '../res/fontConfig';
+import 'firebase/auth';
 
 const NeonatalList = () => {
   const [neonatos, setNeonatos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   //const getUsers = () => {
   // firebase.db.collection('users').onSnapshot((querySnapshot) => {
@@ -18,9 +20,11 @@ const NeonatalList = () => {
   //};
 
   useEffect(() => {
+    const userEmail = firebase.firebase.auth().currentUser.email;
+    setLoading(true);
     firebase.db
       .collection('users')
-      .doc('ramiroguzmanc@gmail.com')
+      .doc(userEmail)
       .collection('neonatos')
       .onSnapshot((querySnapshot) => {
         const neonatos = [];
@@ -39,17 +43,25 @@ const NeonatalList = () => {
           });
         });
         //  console.log(neonatos);
+        setLoading(false);
         setNeonatos(neonatos);
       });
   }, []);
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.p}>Seleccione un neonato:</Text>
+      {loading == true ? (
+        <Text style={styles.p}>Cargando...</Text>
+      ) : (
+        <Text style={styles.p}>Seleccione un neonato:</Text>
+      )}
       {neonatos.map((neo) => {
         console.log('Neo', neo);
         return (
-          <ListItem key={neo.id} style={styles.listItem}>
+          <ListItem
+            key={neo.id}
+            style={styles.listItem}
+            onPress={() => alert(neo.id)}>
             <Avatar
               source={{
                 uri:
@@ -65,7 +77,6 @@ const NeonatalList = () => {
                 Peso: {neo.weight} - IMC: {neo.IMC} - Altura: {neo.height}
               </ListItem.Subtitle>
             </ListItem.Content>
-            <ListItem.Chevron color="black" />
           </ListItem>
         );
       })}
