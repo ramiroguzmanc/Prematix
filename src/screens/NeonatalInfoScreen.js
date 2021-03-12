@@ -1,12 +1,10 @@
 import React from 'react';
-import {ScrollView, View, StyleSheet} from 'react-native';
-import Colors from '../res/Colors';
-import user from '../assets/images/user.png';
-import ShowValue from '../components/ShowValue';
-
+import {ScrollView, View, StyleSheet, Text} from 'react-native';
+import {ListItem} from 'react-native-elements';
 import {Avatar} from 'react-native-elements';
+import fontConfig from '../res/fontConfig';
 
-const NeonatalInfoScreen = () => {
+const NeonatalInfoScreen = (props) => {
   return (
     <ScrollView style={style.scrollContainer}>
       <View style={style.avatarContainer}>
@@ -21,25 +19,78 @@ const NeonatalInfoScreen = () => {
           }}
         />
       </View>
-      <ShowValue title="Fec. Nac:" place="DD/MM/AA" />
-      <ShowValue title="Peso:" place="kg." measure="kg." />
-      <ShowValue title="Altura:" place="Cm" measure="Cm." />
-      <ShowValue title="IMC" place="Índice Masa Corporal" />
-      <ShowValue title="P. craneal" place="Perímetro craneal" measure="Cm" />
-      <ShowValue title="Madre" place="Madre" />
-      <ShowValue title="Padre" place="Padre" />
+      <Text>{props.route.params.neoId}</Text>
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>Nombres:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>Apellidos:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>Fecha Nacimiento:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>IMC:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>
+            Perímetro Craneal:
+          </ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>Peso:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
+
+      <ListItem bottomDivider>
+        <ListItem.Content style={style.content}>
+          <ListItem.Title style={style.title}>Altura:</ListItem.Title>
+          <ListItem.Title></ListItem.Title>
+        </ListItem.Content>
+      </ListItem>
     </ScrollView>
   );
 };
 
 const style = StyleSheet.create({
   scrollContainer: {
-    backgroundColor: Colors.azul,
+    //  backgroundColor: 'white',
   },
   avatarContainer: {
     alignContent: 'center',
     alignItems: 'center',
     marginVertical: 20,
+  },
+  title: {
+    ...fontConfig.p,
+    fontWeight: 'bold',
+  },
+  content: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 

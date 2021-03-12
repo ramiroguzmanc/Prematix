@@ -62,7 +62,11 @@ const NeonatalList = (props) => {
           <ListItem
             key={neo.id}
             style={styles.listItem}
-            onPress={() => props.navigation.navigate('NeonatalInfoScreen')}>
+            onPress={() =>
+              props.navigation.navigate('NeonatalInfoScreen', {
+                neoId: neo.id,
+              })
+            }>
             <Avatar
               rounded
               size="medium"
