@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, StyleSheet} from 'react-native';
-import firebase from '../utils/firebase';
 import {ListItem, Avatar} from 'react-native-elements';
 import ContainerConfig from '../res/ContainerConfig';
 import fontConfig from '../res/fontConfig';
+import firebase from '../utils/firebase';
 import 'firebase/auth';
 import 'react-native-vector-icons';
 

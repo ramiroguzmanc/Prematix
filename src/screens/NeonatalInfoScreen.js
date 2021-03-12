@@ -1,10 +1,48 @@
-import React from 'react';
-import {ScrollView, View, StyleSheet, Text} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, View, StyleSheet, Text, Button} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {Avatar} from 'react-native-elements';
 import fontConfig from '../res/fontConfig';
+import firebase from '../utils/firebase';
+import 'firebase/auth';
 
 const NeonatalInfoScreen = (props) => {
+  const [neonato, setNeonato] = useState({
+    docId: props.route.params.neoId,
+    name: '',
+    lastname: '',
+    born: '',
+    IMC: '',
+    PC: '',
+    weight: '',
+    height: '',
+  });
+
+  useEffect(() => {
+    const userEmail = firebase.firebase.auth().currentUser.email;
+
+    firebase.db
+      .collection('users')
+      .doc(userEmail)
+      .collection('neonatos')
+      .doc(neonato.docId)
+      .get()
+      .then((doc) => {
+        //console.log(doc.data());
+        const {name, lastname, IMC, PC, born, height, weight} = doc.data();
+        setNeonato({
+          ...neonato,
+          name,
+          lastname,
+          IMC,
+          PC,
+          born,
+          height,
+          weight,
+        });
+      });
+  }, []);
+
   return (
     <ScrollView style={style.scrollContainer}>
       <View style={style.avatarContainer}>
@@ -19,33 +57,31 @@ const NeonatalInfoScreen = (props) => {
           }}
         />
       </View>
-      <Text>{props.route.params.neoId}</Text>
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>Nombres:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.name}</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>Apellidos:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.lastname}</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>Fecha Nacimiento:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.born}</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>IMC:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.IMC}</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
@@ -54,21 +90,21 @@ const NeonatalInfoScreen = (props) => {
           <ListItem.Title style={style.title}>
             Perímetro Craneal:
           </ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.PC}</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>Peso:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.weight} lbs.</ListItem.Title>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
         <ListItem.Content style={style.content}>
           <ListItem.Title style={style.title}>Altura:</ListItem.Title>
-          <ListItem.Title></ListItem.Title>
+          <ListItem.Title style={style.p}>{neonato.height} cm</ListItem.Title>
         </ListItem.Content>
       </ListItem>
     </ScrollView>
@@ -87,6 +123,9 @@ const style = StyleSheet.create({
   title: {
     ...fontConfig.p,
     fontWeight: 'bold',
+  },
+  p: {
+    ...fontConfig.p,
   },
   content: {
     flexDirection: 'row',
