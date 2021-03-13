@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet, Pressable, Text, Image} from 'react-native';
-import MenuOption from '../components/MenuOption';
 import Colors from '../res/Colors';
 import fontConfig from '../res/fontConfig';
 import cuidado from '../assets/images/cuidado.png';

@@ -11,15 +11,6 @@ const NeonatalList = (props) => {
   const [neonatos, setNeonatos] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  //const getUsers = () => {
-  // firebase.db.collection('users').onSnapshot((querySnapshot) => {
-  //   querySnapshot.docs.forEach((doc) => {
-  //     console.log(doc.data());
-  //     console.log(querySnapshot);
-  //   });
-  // });
-  //};
-
   useEffect(() => {
     const userEmail = firebase.firebase.auth().currentUser.email;
     setLoading(true);
@@ -30,7 +21,6 @@ const NeonatalList = (props) => {
       .onSnapshot((querySnapshot) => {
         const neonatos = [];
         querySnapshot.docs.forEach((doc) => {
-          //console.log("Current data:",doc.data());
           const {IMC, PC, born, height, lastname, name, weight} = doc.data();
           neonatos.push({
             id: doc.id,
@@ -43,7 +33,6 @@ const NeonatalList = (props) => {
             weight,
           });
         });
-        //  console.log(neonatos);
         setLoading(false);
         setNeonatos(neonatos);
       });
@@ -57,7 +46,6 @@ const NeonatalList = (props) => {
         <Text style={styles.p}>Seleccione un neonato:</Text>
       )}
       {neonatos.map((neo) => {
-        console.log('Neo', neo);
         return (
           <ListItem
             key={neo.id}
