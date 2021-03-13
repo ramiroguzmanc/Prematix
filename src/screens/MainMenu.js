@@ -13,12 +13,13 @@ import about from '../assets/images/about.png';
 const MainMenu = (props) => {
   return (
     <View style={styles.container}>
-      <MenuOption
-        title="Cuidado Neonatal"
-        source={cuidado}
-        goTo="NeonatalCareScreen"
-        {...props}
-      />
+      {/*Cuidado neonatal */}
+      <Pressable
+        style={styles.button}
+        onPress={() => props.navigation.navigate('NeonatalCareScreen')}>
+        <Image source={cuidado} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Cuidado neonatal</Text>
+      </Pressable>
 
       {/*Acerca del Neonato */}
       <Pressable
@@ -27,20 +28,38 @@ const MainMenu = (props) => {
         <Image source={acercade} style={styles.buttonImage} />
         <Text style={styles.buttonText}>Acerca de mi neonato</Text>
       </Pressable>
-      <MenuOption title="Ver mi neonato" source={verneo} />
-      <MenuOption
-        title="Preguntas frecuentes"
-        source={preguntas}
-        goTo="FQAScreen"
-        {...props}
-      />
-      <MenuOption title="Contactar pediatra" source={contacto} />
-      <MenuOption
-        title="Acerca de la app"
-        source={about}
-        goTo="AboutScreen"
-        {...props}
-      />
+
+      {/*Ver mi neonato*/}
+      <Pressable
+        style={styles.button}
+        onPress={() => alert('En construcción!')}>
+        <Image source={verneo} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Ver mi neonato</Text>
+      </Pressable>
+
+      {/*Preguntas frecuentes */}
+      <Pressable
+        style={styles.button}
+        onPress={() => props.navigation.navigate('FQAScreen')}>
+        <Image source={preguntas} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Preguntas frecuentes</Text>
+      </Pressable>
+
+      {/*Contactar pediatra*/}
+      <Pressable
+        style={styles.button}
+        onPress={() => alert('En construcción!')}>
+        <Image source={contacto} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Contactar pediatra</Text>
+      </Pressable>
+
+      {/*Acerca de la app */}
+      <Pressable
+        style={styles.button}
+        onPress={() => props.navigation.navigate('AboutScreen')}>
+        <Image source={about} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Acerca de la app</Text>
+      </Pressable>
     </View>
   );
 };
