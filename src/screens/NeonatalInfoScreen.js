@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, View, StyleSheet, Text, Button} from 'react-native';
+import {ScrollView, View, StyleSheet, Text, Image} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {Avatar} from 'react-native-elements';
 import fontConfig from '../res/fontConfig';
@@ -18,7 +18,10 @@ const NeonatalInfoScreen = (props) => {
     height: '',
   });
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     const userEmail = firebase.firebase.auth().currentUser.email;
 
     firebase.db
@@ -40,73 +43,88 @@ const NeonatalInfoScreen = (props) => {
           height,
           weight,
         });
+        setLoading(false);
       });
   }, []);
 
   return (
     <ScrollView style={style.scrollContainer}>
-      <View style={style.avatarContainer}>
-        <Avatar
-          size="xlarge"
-          rounded
-          title="CR"
-          activeOpacity={0.7}
-          source={{
-            uri:
-              'https://www.tuexperto.com/wp-content/uploads/2015/07/perfil_01.jpg',
-          }}
-        />
-      </View>
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>Nombres:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.name}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+      {loading ? (
+        <Text style={style.title}>Cargando...</Text>
+      ) : (
+        <>
+          <View style={style.avatarContainer}>
+            <Avatar
+              size="xlarge"
+              rounded
+              title="CR"
+              activeOpacity={0.7}
+              source={{
+                uri:
+                  'https://www.tuexperto.com/wp-content/uploads/2015/07/perfil_01.jpg',
+              }}
+            />
+          </View>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>Nombres:</ListItem.Title>
+              <ListItem.Title style={style.p}>{neonato.name}</ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>Apellidos:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.lastname}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>Apellidos:</ListItem.Title>
+              <ListItem.Title style={style.p}>
+                {neonato.lastname}
+              </ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>Fecha Nacimiento:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.born}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>
+                Fecha Nacimiento:
+              </ListItem.Title>
+              <ListItem.Title style={style.p}>{neonato.born}</ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>IMC:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.IMC}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>IMC:</ListItem.Title>
+              <ListItem.Title style={style.p}>{neonato.IMC}</ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>
-            Perímetro Craneal:
-          </ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.PC}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>
+                Perímetro Craneal:
+              </ListItem.Title>
+              <ListItem.Title style={style.p}>{neonato.PC}</ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>Peso:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.weight} lbs.</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>Peso:</ListItem.Title>
+              <ListItem.Title style={style.p}>
+                {neonato.weight} lbs.
+              </ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
 
-      <ListItem bottomDivider>
-        <ListItem.Content style={style.content}>
-          <ListItem.Title style={style.title}>Altura:</ListItem.Title>
-          <ListItem.Title style={style.p}>{neonato.height} cm</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
+          <ListItem bottomDivider>
+            <ListItem.Content style={style.content}>
+              <ListItem.Title style={style.title}>Altura:</ListItem.Title>
+              <ListItem.Title style={style.p}>
+                {neonato.height} cm
+              </ListItem.Title>
+            </ListItem.Content>
+          </ListItem>
+        </>
+      )}
     </ScrollView>
   );
 };
