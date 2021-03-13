@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Pressable, StyleSheet, Text} from 'react-native';
 
 import {createStackNavigator} from '@react-navigation/stack';
@@ -19,9 +19,11 @@ const Stack = createStackNavigator();
 const PrematixStack = () => {
   const [signedIn, setSignedIn] = useState(null);
 
-  firebase.firebase.auth().onAuthStateChanged((user) => {
-    user ? setSignedIn(true) : setSignedIn(false);
-  });
+  useEffect(() => {
+    firebase.firebase.auth().onAuthStateChanged((user) => {
+      user ? setSignedIn(true) : setSignedIn(false);
+    });
+  }, []);
 
   const handlePress = async () => {
     try {
