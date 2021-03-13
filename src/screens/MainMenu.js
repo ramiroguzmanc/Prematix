@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, Button, Pressable, Text} from 'react-native';
+import {View, StyleSheet, Pressable, Text, Image} from 'react-native';
 import MenuOption from '../components/MenuOption';
 import Colors from '../res/Colors';
 import fontConfig from '../res/fontConfig';
@@ -19,12 +19,14 @@ const MainMenu = (props) => {
         goTo="NeonatalCareScreen"
         {...props}
       />
-      <MenuOption
-        title="Acerca de mi neonato"
-        source={acercade}
-        goTo="NeonatalList"
-        {...props}
-      />
+
+      {/*Acerca del Neonato */}
+      <Pressable
+        style={styles.button}
+        onPress={() => props.navigation.navigate('NeonatalList')}>
+        <Image source={acercade} style={styles.buttonImage} />
+        <Text style={styles.buttonText}>Acerca de mi neonato</Text>
+      </Pressable>
       <MenuOption title="Ver mi neonato" source={verneo} />
       <MenuOption
         title="Preguntas frecuentes"
@@ -39,11 +41,6 @@ const MainMenu = (props) => {
         goTo="AboutScreen"
         {...props}
       />
-
-    <Pressable style={styles.button} onPress={() => props.navigation.navigate("NeonatalList")}>
-    <Text style={styles.buttonText}>Acerca de mi neonato 2</Text>
-    </Pressable> 
-
     </View>
   );
 };
@@ -63,13 +60,18 @@ styles = StyleSheet.create({
     width: '80%',
     padding: '3%',
     borderRadius: 8,
-    margin: 10, 
+    margin: 10,
   },
 
   buttonText: {
     fontSize: fontConfig.p.fontSize,
     fontWeight: 'bold',
-  }
+  },
+  buttonImage: {
+    width: 50,
+    height: 50,
+    marginRight: 10,
+  },
 });
 
 export default MainMenu;
