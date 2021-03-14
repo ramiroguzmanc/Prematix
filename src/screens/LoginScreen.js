@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
+import {Button} from 'react-native-elements';
 import firebase from '../utils/firebase';
 import 'firebase/auth';
 
@@ -7,16 +8,20 @@ import Colors from '../res/Colors';
 
 const LoginScreen = (props) => {
   const [email, setEmail] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState(null);
 
   const handlePress = async (e) => {
     try {
+      setLoading(true);
       await firebase.firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
       // console.log('User log');
+      setLoading(false);
       props.navigation.navigate('MainMenu');
     } catch (error) {
+      setLoading(false);
       console.log(error);
       alert('Los datos suministrados no son válidos');
     }
@@ -38,9 +43,14 @@ const LoginScreen = (props) => {
         secureTextEntry={true}
         onChangeText={(userPassword) => setPassword(userPassword)}
       />
-      <Pressable style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>Iniciar Sesión</Text>
-      </Pressable>
+
+      <Button
+        title="Iniciar Sesión"
+        titleStyle={{fontWeight: 'bold'}}
+        buttonStyle={styles.button}
+        onPress={handlePress}
+        loading={loading}
+      />
     </View>
   );
 };
@@ -70,22 +80,10 @@ const styles = StyleSheet.create({
     borderColor: 'white',
   },
   button: {
-    borderWidth: 1,
-    height: 42,
-    width: '80%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 40,
     backgroundColor: Colors.rosa,
-    alignSelf: 'center',
     textAlign: 'center',
-    margin: 40,
-    borderColor: Colors.rosa,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
+    width: 200,
+    marginTop: 35,
   },
 });
 
