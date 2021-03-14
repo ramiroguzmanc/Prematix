@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet, Pressable} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
 import firebase from '../utils/firebase';
 import 'firebase/auth';
@@ -30,19 +30,21 @@ const LoginScreen = (props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Prematix</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        placeholderTextColor="white"
-        onChangeText={(userEmail) => setEmail(userEmail)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Contraseña"
-        placeholderTextColor="white"
-        secureTextEntry={true}
-        onChangeText={(userPassword) => setPassword(userPassword)}
-      />
+      <View style={styles.formContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="white"
+          onChangeText={(userEmail) => setEmail(userEmail)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Contraseña"
+          placeholderTextColor="white"
+          secureTextEntry={true}
+          onChangeText={(userPassword) => setPassword(userPassword)}
+        />
+      </View>
 
       <Button
         title="Iniciar Sesión"
@@ -62,6 +64,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  formContainer: {
+    marginVertical: 40,
+    width: '80%',
+  },
   title: {
     color: 'white',
     fontSize: 50,
@@ -70,7 +76,7 @@ const styles = StyleSheet.create({
   input: {
     // backgroundColor: 'white',
     height: 46,
-    width: '80%',
+    width: '100%',
     color: 'white',
     fontSize: 20,
     borderRadius: 8,
@@ -83,7 +89,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.rosa,
     textAlign: 'center',
     width: 200,
-    marginTop: 35,
   },
 });
 
