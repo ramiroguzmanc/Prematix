@@ -31,7 +31,7 @@ const MainMenu = (props) => {
       {/*Ver mi neonato*/}
       <Pressable
         style={styles.button}
-        onPress={() => alert('En construcción!')}>
+        onPress={() => props.navigation.navigate('NeonatalView')}>
         <Image source={verneo} style={styles.buttonImage} />
         <Text style={styles.buttonText}>Ver mi neonato</Text>
       </Pressable>
@@ -47,7 +47,7 @@ const MainMenu = (props) => {
       {/*Contactar pediatra*/}
       <Pressable
         style={styles.button}
-        onPress={() => alert('En construcción!')}>
+        onPress={() => props.navigation.navigate('ContactPediatra')}>
         <Image source={contacto} style={styles.buttonImage} />
         <Text style={styles.buttonText}>Contactar pediatra</Text>
       </Pressable>
