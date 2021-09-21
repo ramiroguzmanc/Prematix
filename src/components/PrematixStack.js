@@ -10,6 +10,8 @@ import MainMenu from '../screens/MainMenu';
 import NeonatalCareScreen from '../screens/NeonatalCareScreen';
 import NeonatalInfoScreen from '../screens/NeonatalInfoScreen';
 import NeonatalList from '../screens/NeonatalList';
+import NeonatalView from '../screens/NeonatalView';
+import ContactPediatra from '../screens/ContactPedia';
 import FQAScreen from '../screens/FQAScreen';
 import AnswerScreen from '../screens/AnswerScreen';
 import AboutScreen from '../screens/AboutScreen';
@@ -65,6 +67,18 @@ const PrematixStack = () => {
             name="NeonatalInfoScreen"
             component={NeonatalInfoScreen}
             options={{title: 'Acerca de mi neonato'}}
+          />
+
+          <Stack.Screen
+            name="NeonatalView"
+            component={NeonatalView}
+            options={{ title: 'Acerca de mi neonato' }}
+          />
+
+          <Stack.Screen
+            name="ContactPediatra"
+            component={ContactPediatra}
+            options={{ title: 'Contactar Pediatra' }}
           />
 
           <Stack.Screen
