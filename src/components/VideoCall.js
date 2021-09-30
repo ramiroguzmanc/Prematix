@@ -16,6 +16,7 @@ import {
   RTCSessionDescription,
   RTCIceCandidate,
 } from 'react-native-webrtc';
+import LoadingVideo from './LoadingVideo';
 
 const servers = {
   iceServers: [
@@ -36,10 +37,6 @@ function VideoCall(props) {
   const [remoteStream, setRemoteStream] = useState(null);
 
   const pc = useRef();
-
-  const copyToClipboard = () => {
-    Clipboard.setString(roomId);
-  };
 
   const setupSources = async () => {
     pc.current = new RTCPeerConnection(servers);
@@ -168,6 +165,11 @@ function VideoCall(props) {
     };
   };
 
+  const copyToClipboard = () => {
+    console.log('Codigo copiado')
+    Clipboard.setString(roomId);
+  };
+
   const hangUp = async () => {
     pc.current.close();
 
@@ -196,7 +198,24 @@ function VideoCall(props) {
   if (localStream && !remoteStream) {
     {console.log('estoy aqui')}
     return (
-      <Text>Cargando</Text>
+      <View style={{ height: '100%', alignItems: 'center' }}>
+        <View style={styles.vContainer}>
+          <RTCView
+          style={styles.videoLocal}
+          mirror
+          objectFit={'cover'}
+          streamURL={localStream.toURL()}
+        />
+        </View>
+        
+        <TouchableOpacity onPress={copyToClipboard()} style={styles.buttonContainer}>
+          <Text style={{ fontWeight: 'bold' }}>Copiar Código</Text>
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.text}>Esperando Contestación</Text>
+        </View>
+          <LoadingVideo />
+      </View>
     );
   }else if (localStream && remoteStream) {
     {console.log('entré')}
@@ -237,10 +256,24 @@ function VideoCall(props) {
 }
 
 const styles = StyleSheet.create({
-  Container: {
+  vContainer: {
+    display: 'flex',
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
+    padding: 20,
+    marginTop: 20,
+  },
+  buttonContainer : {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    bottom: '40%',
+    backgroundColor: '#5D68F8',
+    alignItems: "center",
+    width: '50%',
+    height: '5%',
+    borderRadius: 10,
+
   },
   containerclip: {
     flex: 1,
@@ -249,23 +282,27 @@ const styles = StyleSheet.create({
   },
   video: {
     position: 'absolute',
-    width: 100,
-    height: 200,
+    width: '100%',
+    height: '60%',
     top: 0,
-    left: 20,
     elevation: 10,
+    padding: 20
   },
   videoLocal: {
     position: 'absolute',
-    width: 100,
-    height: 150,
+    width: '100%',
+    height: 500,
     top: 0,
-    right: 20,
-    elevation: 10,
   },
   highlight: {
     fontWeight: '700',
   },
+  text:{
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: 'center',
+    bottom: 100,
+  }
 });
 
 export default VideoCall;
