@@ -27,7 +27,6 @@ function Menu(props) {
       <View className="create box" style={style.buttonContainer}>
         <Button onPress={() => props.setPage('create')} title="Crear Llamada"/> 
       </View>
-
       <View className="answer box" style={style.container}>
         <TextInput
           style={style.input}
@@ -43,11 +42,11 @@ function Menu(props) {
 
 const style = StyleSheet.create({
   container: {
-    marginTop: '80%',
+    marginTop: '15%',
     marginHorizontal: 60,
   },
   sectionContainer: {
-    marginTop: '20%',
+    marginTop: '60%',
   },
   buttonContainer: {
     marginHorizontal: 60,

@@ -192,6 +192,8 @@ function VideoCall(props) {
           });
         });
       await roomRef.delete();
+      console.log('Salí')
+      props.setPage('home')
     }
   };
 
@@ -201,7 +203,7 @@ function VideoCall(props) {
       <View style={{ height: '100%', alignItems: 'center' }}>
         <View style={styles.vContainer}>
           <RTCView
-          style={styles.videoLocal}
+          style={styles.videoLocalE}
           mirror
           objectFit={'cover'}
           streamURL={localStream.toURL()}
@@ -212,7 +214,7 @@ function VideoCall(props) {
           <Text style={{ fontWeight: 'bold' }}>Copiar Código</Text>
         </TouchableOpacity>
         <View>
-          <Text style={styles.text}>Esperando Contestación</Text>
+          <Text style={styles.text}>Esperando Respuesta</Text>
         </View>
           <LoadingVideo />
       </View>
@@ -221,16 +223,23 @@ function VideoCall(props) {
     {console.log('entré')}
     return (
       <View style={styles.container}>
+        <View>
         <RTCView
+          style={styles.videoRemote}
           objectFit={'cover'}
-          style={styles.video}
+          mirror
           streamURL={remoteStream.toURL()}
         />
-        <RTCView
-          objectFit={'cover'}
+        </View>
+        <View>
+          <RTCView
           style={styles.videoLocal}
+          objectFit={'cover'}
+          mirror
           streamURL={localStream.toURL()}
         />
+        </View>
+        <Button style={styles.button} onPress={hangUp} title="Colgar" />
       </View>
     );
   }
@@ -264,6 +273,19 @@ const styles = StyleSheet.create({
     padding: 20,
     marginTop: 20,
   },
+  container:{
+    height: '100%',
+    borderColor: 'red',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  videoLocalE: {
+    position: 'absolute',
+    width: '100%',
+    height: 500,
+    top: 0
+  },
   buttonContainer : {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -273,26 +295,26 @@ const styles = StyleSheet.create({
     width: '50%',
     height: '5%',
     borderRadius: 10,
-
   },
   containerclip: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  video: {
+  videoRemote: {
     position: 'absolute',
     width: '100%',
-    height: '60%',
+    height: 720,
     top: 0,
-    elevation: 10,
-    padding: 20
+    left:0,
+    right: 0,
+    bottom: 0,
   },
   videoLocal: {
     position: 'absolute',
-    width: '100%',
-    height: 500,
-    top: 0,
+    width: '60%',
+    height: 300,
+    left: 0,
   },
   highlight: {
     fontWeight: '700',
@@ -302,6 +324,10 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     bottom: 100,
+  },
+  button: {
+    position: 'absolute',
+    bottom: 0,
   }
 });
 

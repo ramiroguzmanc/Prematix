@@ -144,6 +144,7 @@ function ViewNeo(props) {
           });
         });
       await roomRef.delete();
+      props.setPage('viewNeo')
     }
   };
 
@@ -159,11 +160,17 @@ function ViewNeo(props) {
     console.log(remoteStream)
     return (
       <View style={styles.container}>
-        <RTCView
+        <View style={styles.vContainer}>
+          <RTCView
           objectFit={'cover'}
           style={styles.video}
+          mirror
           streamURL={remoteStream.toURL()}
         />
+        </View>
+        <TouchableOpacity onPress={hangUp} style={styles.buttonContainer}>
+          <Text style={{ fontWeight: 'bold' }}>Terminar</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -173,34 +180,40 @@ function ViewNeo(props) {
 }
 
 const styles = StyleSheet.create({
-  Container: {
+  container: {
+    height: '100%',
+    alignItems: 'center',
+  },
+  vContainer:{
+    display: 'flex',
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  containerclip: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+    marginTop: 20,
   },
   video: {
     position: 'absolute',
-    width: 100,
-    height: 150,
-    top: 0,
-    left: 20,
-    elevation: 10,
-  },
-  videoLocal: {
-    position: 'absolute',
-    width: 100,
-    height: 150,
-    top: 0,
-    left: 20,
-    elevation: 10,
+    width: '100%',
+    height: 550,
+    top: 0
   },
   highlight: {
     fontWeight: '700',
+  },
+  button: {
+    position: 'absolute',
+    bottom: 0,
+  },
+  buttonContainer : {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    bottom: '40%',
+    backgroundColor: '#F94144',
+    alignItems: "center",
+    width: '50%',
+    height: '5%',
+    borderRadius: 10,
   },
 });
 
